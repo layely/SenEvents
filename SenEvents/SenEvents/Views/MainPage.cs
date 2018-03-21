@@ -39,7 +39,7 @@ namespace SenEvents
             }
 
             Children.Add(itemsPage);
-            Children.Add(aboutPage);
+            //Children.Add(aboutPage);
 
             Title = Children[0].Title;
         }
