@@ -109,7 +109,7 @@ namespace SenEvents
         public async Task<bool> UpdateItemAsync(Event item)
         {
             //throw new NotImplementedException();
-            var _event = events.Where((Event arg) => arg.Id.ToString() == id).FirstOrDefault();
+            var _event = events.Where((Event arg) => arg.Id == item.Id).FirstOrDefault();
             events.Remove(_event);
             events.Add(_event);
 

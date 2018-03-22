@@ -9,6 +9,7 @@ namespace SenEvents
         public MainPage()
         {
             Page itemsPage, aboutPage = null;
+            Page listEventsPage = null; 
 
             switch (Device.RuntimePlatform)
             {
@@ -35,11 +36,17 @@ namespace SenEvents
                     {
                         Title = "About"
                     };
+
+                    listEventsPage = new ListEventsPage()
+                    {
+                        Title = "Explorer"
+                    };
                     break;
             }
 
-            Children.Add(itemsPage);
+            //Children.Add(itemsPage);
             //Children.Add(aboutPage);
+            Children.Add(listEventsPage);
 
             Title = Children[0].Title;
         }
