@@ -32,5 +32,35 @@ namespace SenEvents
 
             BindingContext = this.ViewModel = viewModel;
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            startAnimation();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            //this.stopAnimation();
+            this.MainParallax.DestroyParallaxView();
+        }
+
+        async void startAnimation() {
+            uint duration = 2 * (60 * 1000); // Two minutes
+
+            await this.Image?.RotateTo(360, 500); // this will make the app the crash when back button is hit
+
+            while (true)
+            {
+                await this.Image?.ScaleTo(2, duration, Easing.BounceIn);
+                await this.Image?.ScaleTo(1, duration);
+            }
+        }
+
+        void stopAnimation() {
+            ViewExtensions.CancelAnimations(this.Image);
+        }
     }
 }
