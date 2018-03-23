@@ -20,18 +20,29 @@ namespace SenEvents
             BindingContext = viewModel = new ListEventsViewModel();
         }
 
-        void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
-        {
-            // Manually deselect item
-            EventsListView.SelectedItem = null;
-        }
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
             if (viewModel.Events.Count == 0)
                 viewModel.LoadEventsCommand.Execute(null);
+        }
+
+        async void OnEventSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var _event = args.SelectedItem as Event;
+            if (_event == null)
+                return;
+
+            await Navigation.PushAsync(new EventDetailPage(new EventDetailViewModel(_event)));
+
+            // Manually deselect item
+            this.EventsListView.SelectedItem = null;
+        }
+
+        async void Compte_clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MenuPage());
         }
     }
 }

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SenEvents.EventDetailPage">
+    <ContentPage.Content>
+        <ScrollView Padding="0" Margin="0">
+            <StackLayout Spacing="0" Padding="0">
+                <Frame HeightRequest="210" HorizontalOptions="FillAndExpand" Padding="0" Margin="0">
+                    <Image Source="{Binding Event.PhotoUri}" Aspect="AspectFill"/>
+                </Frame>
+                <StackLayout Spacing="20" Padding="15">
+                    <Frame></Frame>
+                    <Label Text="{Binding Event.Title}" FontSize="Large"/>
+                    <Label Text="{Binding Event.Text}" FontSize="Small"/>
+                    <Label Text="{Binding Event.StartDate}" FontSize="Medium"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
