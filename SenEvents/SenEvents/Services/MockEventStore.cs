@@ -115,5 +115,10 @@ namespace SenEvents
 
             return await Task.FromResult(true);
         }
+
+        public async Task<bool> IsAttending(string userEmail)
+        {
+            return await Task.FromResult(DateTime.Now.Second % 2 == 0 ? true : false);
+        }  
     }
 }

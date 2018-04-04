@@ -8,41 +8,46 @@ namespace SenEvents
     {
         public MainPage()
         {
-            Page itemsPage, aboutPage = null;
-            Page listEventsPage = null; 
+            //Page itemsPage, aboutPage = null;
+            Page listEventsPage = null;
 
-            switch (Device.RuntimePlatform)
+            //switch (Device.RuntimePlatform)
+            //{
+            //    case Device.iOS:
+            //        itemsPage = new NavigationPage(new ItemsPage())
+            //        {
+            //            Title = "Browse"
+            //        };
+
+            //        aboutPage = new NavigationPage(new AboutPage())
+            //        {
+            //            Title = "About"
+            //        };
+            //        itemsPage.Icon = "tab_feed.png";
+            //        aboutPage.Icon = "tab_about.png";
+            //        break;
+            //    default:
+            //        itemsPage = new ItemsPage()
+            //        {
+            //            Title = "Browse"
+            //        };
+
+            //        aboutPage = new AboutPage()
+            //        {
+            //            Title = "About"
+            //        };
+
+            //        listEventsPage = new ListEventsPage()
+            //        {
+            //            Title = "Explorer"
+            //        };
+            //        break;
+            //}
+
+            listEventsPage = new ListEventsPage()
             {
-                case Device.iOS:
-                    itemsPage = new NavigationPage(new ItemsPage())
-                    {
-                        Title = "Browse"
-                    };
-
-                    aboutPage = new NavigationPage(new AboutPage())
-                    {
-                        Title = "About"
-                    };
-                    itemsPage.Icon = "tab_feed.png";
-                    aboutPage.Icon = "tab_about.png";
-                    break;
-                default:
-                    itemsPage = new ItemsPage()
-                    {
-                        Title = "Browse"
-                    };
-
-                    aboutPage = new AboutPage()
-                    {
-                        Title = "About"
-                    };
-
-                    listEventsPage = new ListEventsPage()
-                    {
-                        Title = "Explorer"
-                    };
-                    break;
-            }
+                Title = "Explorer"
+            };
 
             //Children.Add(itemsPage);
             //Children.Add(aboutPage);

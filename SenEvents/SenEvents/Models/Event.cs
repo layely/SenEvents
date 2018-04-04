@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using Xamarin.Forms;
 
 namespace SenEvents
@@ -22,6 +23,5 @@ namespace SenEvents
         public string Organization { get; set; }
         public User EventPublisher { get; set; }
 
-        public Image Image => new Image { Source = ImageSource.FromUri(new Uri(this.PhotoUri)) }; 
     }
 }

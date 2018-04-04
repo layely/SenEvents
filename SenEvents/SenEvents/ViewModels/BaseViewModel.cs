@@ -9,7 +9,9 @@ namespace SenEvents
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<Event> EventStore => DependencyService.Get<IDataStore<Event>>() ?? new MockEventStore();
+        public IUserStore UserStore => DependencyService.Get<IUserStore>() ?? new MockUserStore();
 
         bool isBusy = false;
         public bool IsBusy

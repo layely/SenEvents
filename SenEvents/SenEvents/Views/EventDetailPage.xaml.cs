@@ -15,10 +15,12 @@ namespace SenEvents
         EventDetailViewModel ViewModel;
 
         // Note - The Xamarin.Forms Previewer requires a default, parameterless constructor to render a page.
-        public EventDetailPage() {
+        public EventDetailPage()
+        {
             InitializeComponent();
 
-            Event _event = new Event() {
+            Event _event = new Event()
+            {
                 Title = "Title",
                 Text = "Description",
                 StartDate = DateTime.Today
@@ -27,16 +29,18 @@ namespace SenEvents
             BindingContext = this.ViewModel = new EventDetailViewModel(_event);
         }
 
-        public EventDetailPage(EventDetailViewModel viewModel) {
+        public EventDetailPage(EventDetailViewModel viewModel)
+        {
             InitializeComponent();
 
             BindingContext = this.ViewModel = viewModel;
         }
 
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
-
+            await this.ViewModel.InitAsync();
+            ButtonAttend.Text = this.ViewModel.ButtonAttendText;
             startAnimation();
         }
 
@@ -47,7 +51,8 @@ namespace SenEvents
             this.MainParallax.DestroyParallaxView();
         }
 
-        async void startAnimation() {
+        async void startAnimation()
+        {
             uint duration = 2 * (60 * 1000); // Two minutes
 
             await this.Image?.RotateTo(360, 500); // this will make the app the crash when back button is hit
@@ -59,8 +64,14 @@ namespace SenEvents
             }
         }
 
-        void stopAnimation() {
+        void stopAnimation()
+        {
             ViewExtensions.CancelAnimations(this.Image);
+        }
+
+        void ButtonAttend_Clicked(object sender, EventArgs e)
+        {
+            //await DateTime
         }
     }
 }

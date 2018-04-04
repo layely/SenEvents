@@ -11,7 +11,6 @@ namespace SenEvents
 {
     class ListEventsViewModel : BaseViewModel
     {
-        public IDataStore<Event> EventStore => DependencyService.Get<IDataStore<Event>>() ?? new MockEventStore();
         public ObservableCollection<Event> Events { get; set; }
         public Command LoadEventsCommand { get; set; }
 

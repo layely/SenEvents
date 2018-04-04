@@ -11,6 +11,7 @@ namespace SenEvents
         public const string
             Concours = "Concours",
             Cinema = "Cinema",
+            Concert = "Concert",
             Sport = "Sport",
             Religion = "Religion",
             Sabar = "Sabar",
