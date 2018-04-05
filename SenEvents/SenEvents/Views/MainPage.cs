@@ -53,13 +53,13 @@ namespace SenEvents
             //Children.Add(aboutPage);
             Children.Add(listEventsPage);
 
-            Title = Children[0].Title;
+            Title = "SenEvents";
         }
 
         protected override void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();
-            Title = CurrentPage?.Title ?? string.Empty;
+            //Title = CurrentPage?.Title ?? string.Empty;
         }
     }
 }

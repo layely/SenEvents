@@ -1,12 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="SenEvents.MenuPage">
+             x:Class="SenEvents.MenuPage"
+             Title="Menu"
+             Icon="app_icon.jpg">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Frame x:Name="FrameViewProfile">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="10">
+                    <Image  Source="user.png" WidthRequest="60" HeightRequest="60"/>
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="Abdoulaye Oumar LY" FontSize="Medium" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Text="Voir Profile" FontSize="Small"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <StackLayout Margin="0, 50, 0, 0" VerticalOptions="End">
+                <Label Text="Evènements" TextColor="Black" FontSize="Medium" VerticalTextAlignment="End" VerticalOptions="End" Margin="10,0,0,0"/>
+            </StackLayout>
+            <Frame x:Name="FrameCreateEvent">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                    <Image  Source="create_event.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                    <Label Text="Créer un évènement" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                        <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

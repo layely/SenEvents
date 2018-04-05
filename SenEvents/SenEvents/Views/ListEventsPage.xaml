@@ -5,7 +5,7 @@
              Title="{Binding Title}"
              x:Name="HomeEventsPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Icon="icon-user.png" Clicked="Compte_clicked"/>
+        <ToolbarItem Icon="user.png" Clicked="Compte_clicked"/>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>

@@ -16,5 +16,19 @@ namespace SenEvents
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            FrameViewProfile.GestureRecognizers.Add(new TapGestureRecognizer() {
+                Command = new Command(() => {
+                    //FrameViewProfile.BackgroundColor = Color.WhiteSmoke;
+                    DisplayAlert("Alert", "You have been alerted", "OK");
+                    //FrameViewProfile.BackgroundColor = Color.Default;
+                })
+            });
+
+        }
     }
 }
