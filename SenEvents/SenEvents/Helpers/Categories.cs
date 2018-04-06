@@ -21,5 +21,8 @@ namespace SenEvents
             Music = "Music",
             Education = "Education",
             Autre = "Autre";
+
+        public static IList<string> All => new List<string> { Concours, Cinema, Concert, Sport,
+            Religion, Sabar, Set_Settal, Politique, Marche, Music, Education, Autre};
     }
 }

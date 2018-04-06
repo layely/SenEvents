@@ -5,28 +5,92 @@
              Title="Menu"
              Icon="app_icon.jpg">
     <ContentPage.Content>
-        <StackLayout>
-            <Frame x:Name="FrameViewProfile">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="10">
-                    <Image  Source="user.png" WidthRequest="60" HeightRequest="60"/>
-                    <StackLayout Orientation="Vertical">
-                        <Label Text="Abdoulaye Oumar LY" FontSize="Medium" TextColor="Black" FontAttributes="Bold"/>
-                        <Label Text="Voir Profile" FontSize="Small"/>
+        <ScrollView>
+            <StackLayout>
+                <Frame x:Name="FrameViewProfile">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="10">
+                        <Image  Source="user_icon.png" WidthRequest="60" HeightRequest="60"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="Abdoulaye Oumar LY" FontSize="Medium" TextColor="Black" FontAttributes="Bold"/>
+                            <Label Text="Voir Profile" FontSize="Small"/>
+                        </StackLayout>
                     </StackLayout>
+                </Frame>
+                <StackLayout Margin="0, 30, 0, 0" VerticalOptions="End">
+                    <Label Text="Evènements" TextColor="Black" FontSize="Medium" VerticalTextAlignment="End" VerticalOptions="End" Margin="10,0,0,0"/>
                 </StackLayout>
-            </Frame>
-            <StackLayout Margin="0, 50, 0, 0" VerticalOptions="End">
-                <Label Text="Evènements" TextColor="Black" FontSize="Medium" VerticalTextAlignment="End" VerticalOptions="End" Margin="10,0,0,0"/>
+                <Frame x:Name="FrameCreateEvent">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Image  Source="create_event_icon.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                        <Label Text="Créer un Evènement" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="FrameMyEvents">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Image  Source="my_events_icon.jpg" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                        <Label Text="Mes Evènements" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="FrameEventsToAttend">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Image  Source="my_events_toattend_icon.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                        <Label Text="Evènements à Assister" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout Margin="0, 30, 0, 0" VerticalOptions="End">
+                    <Label Text="Apropos" TextColor="Black" FontSize="Medium" VerticalTextAlignment="End" VerticalOptions="End" Margin="10,0,0,0"/>
+                </StackLayout>
+                <Frame x:Name="FrameAboutUs">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Image  Source="about_icon.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                        <Label Text="A Propos de Nous" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="FrameContactUs">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Image  Source="send_icon.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                        <Label Text="Nous Contacter" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+                <Frame x:Name="FrameNeedHelp">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Image  Source="help_icon.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                        <Label Text="Besoin d'Aide?" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout Margin="0, 30, 0, 0" VerticalOptions="End">
+                    <Label Text="Deconnexion" TextColor="Black" FontSize="Medium" VerticalTextAlignment="End" VerticalOptions="End" Margin="10,0,0,0"/>
+                </StackLayout>
+                <Frame x:Name="FrameLogout">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
+                        <Image  Source="logout_icon.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
+                        <Label Text="Se Déconnecter" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
-            <Frame x:Name="FrameCreateEvent">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10">
-                    <Image  Source="create_event.png" WidthRequest="30" HeightRequest="30" Margin="17,0,0,0"/>
-                    <Label Text="Créer un évènement" TextColor="Black" FontSize="Small" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="15,0,0,0"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                        <Image  Source="next.png" WidthRequest="30" HeightRequest="30" HorizontalOptions="EndAndExpand" Opacity="0.5"/>
-                    </StackLayout>
-                </StackLayout>
-            </Frame>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

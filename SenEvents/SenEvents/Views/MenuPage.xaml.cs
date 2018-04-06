@@ -29,6 +29,12 @@ namespace SenEvents
                 })
             });
 
+            FrameCreateEvent.GestureRecognizers.Add(new TapGestureRecognizer()
+            {
+                Command = new Command(() => {
+                    Navigation.PushAsync(new CreateEventPage());
+                })
+            });
         }
     }
 }

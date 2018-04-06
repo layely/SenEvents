@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SenEvents.CreateEventPage"
+             Title="Créer un Evènement">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Frame>
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Label Text="Titre de l'Evènement" FontSize="Small" TextColor="Black"/>
+                        <Entry x:Name="EntryTitle" Placeholder="Titre"/>
+                        
+                        <BoxView HeightRequest="5"/>
+                        
+                        <Label Text="Image" FontSize="Small" TextColor="Black"/>
+                        <Image x:Name="Image" Source="http://lloydie-d.com/wp-content/themes/lloydie-twentyseventeen-ch/asset/images/no-image_square.png" HeightRequest="150" WidthRequest="150" HorizontalOptions="CenterAndExpand" Aspect="AspectFill"/>
+                        <Button x:Name="ButtonGallery" Text="Sélectionner une image"  Clicked="ButtonGallery_Clicked"/>
+
+                        <BoxView HeightRequest="5"/>
+
+                        <Label Text="Date" FontSize="Small" TextColor="Black"/>
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                            <DatePicker x:Name="DatePickerStart" WidthRequest="110"/>
+                            <TimePicker x:Name="TimePickerStart"/>
+                        </StackLayout>
+
+                        <BoxView HeightRequest="5"/>
+                        <Label Text="Lieu" FontSize="Small" TextColor="Black"/>
+                        <Entry x:Name="EntryPlace" Placeholder="Lieu de l'Evènement"/>
+
+                        <BoxView HeightRequest="5"/>
+                        <Label Text="Ville" FontSize="Small" TextColor="Black"/>
+                        <Picker x:Name="PickerCity" Title="Sélectionner une Ville" ItemsSource="{Binding CityList}"/>
+
+                        <BoxView HeightRequest="5"/>
+                        <Label Text="Catégorie" FontSize="Small" TextColor="Black"/>
+                        <Picker x:Name="PickerCategory" Title="Sélectionner le type de l'évènement" ItemsSource="{Binding CategorieList}"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
