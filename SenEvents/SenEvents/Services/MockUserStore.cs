@@ -14,5 +14,14 @@ namespace SenEvents
             return await Task.FromResult(string.Empty);
         }
 
+        public string GetCurrentUserCity()
+        {
+            return Cities.Dakar;
+        }
+
+        public async Task<string> GetCurrentUserCityAsync ()
+        {
+            return await Task.FromResult(Cities.Dakar);
+        }
     }
 }

@@ -10,47 +10,21 @@ namespace SenEvents
         {
             //Page itemsPage, aboutPage = null;
             Page listEventsPage = null;
+            Page listEventInUserCityPage = null;
 
-            //switch (Device.RuntimePlatform)
-            //{
-            //    case Device.iOS:
-            //        itemsPage = new NavigationPage(new ItemsPage())
-            //        {
-            //            Title = "Browse"
-            //        };
-
-            //        aboutPage = new NavigationPage(new AboutPage())
-            //        {
-            //            Title = "About"
-            //        };
-            //        itemsPage.Icon = "tab_feed.png";
-            //        aboutPage.Icon = "tab_about.png";
-            //        break;
-            //    default:
-            //        itemsPage = new ItemsPage()
-            //        {
-            //            Title = "Browse"
-            //        };
-
-            //        aboutPage = new AboutPage()
-            //        {
-            //            Title = "About"
-            //        };
-
-            //        listEventsPage = new ListEventsPage()
-            //        {
-            //            Title = "Explorer"
-            //        };
-            //        break;
-            //}
+            BaseViewModel baseViewModel = new BaseViewModel();
 
             listEventsPage = new ListEventsPage()
             {
                 Title = "Explorer"
             };
 
-            //Children.Add(itemsPage);
-            //Children.Add(aboutPage);
+            listEventInUserCityPage = new ListEventsPage(new ListEventsViewModel(baseViewModel.UserStore.GetCurrentUserCity()))
+            {
+                Title = "Dans Ma Ville"
+            };
+
+            Children.Add(listEventInUserCityPage);
             Children.Add(listEventsPage);
 
             Title = "SenEvents";

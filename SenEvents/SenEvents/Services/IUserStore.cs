@@ -9,5 +9,7 @@ namespace SenEvents
     public interface IUserStore
     {
         Task<string> GetCurrentUser();
+        string GetCurrentUserCity();
+        Task<string> GetCurrentUserCityAsync();
     }
 }

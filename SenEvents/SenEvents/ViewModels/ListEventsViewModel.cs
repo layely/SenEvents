@@ -9,10 +9,11 @@ using Xamarin.Forms;
 
 namespace SenEvents
 {
-    class ListEventsViewModel : BaseViewModel
+    public class ListEventsViewModel : BaseViewModel
     {
         public ObservableCollection<Event> Events { get; set; }
         public Command LoadEventsCommand { get; set; }
+        public string UserCity;
 
         public ListEventsViewModel()
         {
@@ -26,6 +27,15 @@ namespace SenEvents
             //    Events.Add(_item);
             //    await DataStore.AddItemAsync(_item);
             //});
+        }
+
+        public ListEventsViewModel(string city)
+        {
+            Title = city;
+            Events = new ObservableCollection<Event>();
+            LoadEventsCommand = new Command(async () => await ExecuteLoadEventsCommand());
+
+            this.UserCity = city;
         }
 
         async Task ExecuteLoadEventsCommand()
@@ -42,7 +52,10 @@ namespace SenEvents
                 Debug.WriteLine("events count :::::: " + events.Count());
                 foreach (var _event in events)
                 {
-                    Events.Add(_event);
+                    if (string.IsNullOrEmpty(this.UserCity) || _event.City.Equals(this.UserCity))
+                    {
+                        Events.Add(_event);
+                    }
                 }
             }
             catch (Exception ex)

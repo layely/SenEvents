@@ -13,6 +13,7 @@ namespace SenEvents
     public partial class ListEventsPage : ContentPage
     {
         ListEventsViewModel viewModel;
+        bool NeedUpdate = true;
 
         public ListEventsPage()
         {
@@ -20,12 +21,21 @@ namespace SenEvents
             BindingContext = viewModel = new ListEventsViewModel();
         }
 
+        public ListEventsPage(ListEventsViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = this.viewModel = viewModel;
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-            if (viewModel.Events.Count == 0)
+            if (this.NeedUpdate && viewModel.Events.Count == 0)
+            {
                 viewModel.LoadEventsCommand.Execute(null);
+                this.NeedUpdate = false;
+            }
         }
 
         async void OnEventSelected(object sender, SelectedItemChangedEventArgs args)
