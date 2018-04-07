@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SenEvents.LoginPage"
+             NavigationPage.HasNavigationBar="false">
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <Image Source="xamarin_logo.png" HeightRequest="100" WidthRequest="125" HorizontalOptions="CenterAndExpand"/>
+                    <BoxView HeightRequest="30"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Image Source="username_icon.png" HeightRequest="25" WidthRequest="25"/>
+                        <Entry x:Name="EntryEmail" Placeholder="Email" FontSize="Small" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="15"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Image Source="lock_icon.png" HeightRequest="25" WidthRequest="25"/>
+                        <Entry x:Name="EntryPassword" Placeholder="Mot de Passe" FontSize="Small" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="15"/>
+                    <StackLayout>
+                        <Button x:Name="ButtonLogin" Image="login_icon_25.png" Text="Se Connecter" WidthRequest="200" BorderRadius="15" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

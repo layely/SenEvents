@@ -14,7 +14,7 @@
                         <BoxView HeightRequest="5"/>
                         
                         <Label Text="Image" FontSize="Small" TextColor="Black"/>
-                        <Image x:Name="Image" Source="http://lloydie-d.com/wp-content/themes/lloydie-twentyseventeen-ch/asset/images/no-image_square.png" HeightRequest="150" WidthRequest="150" HorizontalOptions="CenterAndExpand" Aspect="AspectFill"/>
+                        <Image x:Name="Image" Source="no_image_icon.png" HeightRequest="150" WidthRequest="150" HorizontalOptions="CenterAndExpand" Aspect="AspectFill"/>
                         <Button x:Name="ButtonGallery" Text="Sélectionner une image"  Clicked="ButtonGallery_Clicked"/>
 
                         <BoxView HeightRequest="5"/>
@@ -36,6 +36,15 @@
                         <BoxView HeightRequest="5"/>
                         <Label Text="Catégorie" FontSize="Small" TextColor="Black"/>
                         <Picker x:Name="PickerCategory" Title="Sélectionner le type de l'évènement" ItemsSource="{Binding CategorieList}"/>
+
+                        <BoxView HeightRequest="5"/>
+                        <Label Text="Organisateur" FontSize="Small" TextColor="Black"/>
+                        <Entry x:Name="EntryOrganizer" Placeholder="Qui est l'organisateur ?"/>
+
+                        <BoxView HeightRequest="5"/>
+                        <Label Text="Description" FontSize="Small" TextColor="Black"/>
+                        <Editor x:Name="EditorDescription" HeightRequest="400" BackgroundColor="WhiteSmoke" Text="Les détails de l'évènement ici !!!"/>
+
                     </StackLayout>
                 </Frame>
             </StackLayout>

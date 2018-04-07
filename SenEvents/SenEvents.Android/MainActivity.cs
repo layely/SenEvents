@@ -11,6 +11,8 @@ using Android.OS;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 
+using ImageCircle.Forms.Plugin.Droid;
+
 namespace SenEvents.Droid
 {
     [Activity(Label = "SenEvents.Android", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -28,6 +30,7 @@ namespace SenEvents.Droid
             LoadApplication(new App());
 
             Xamarin.FormsMaps.Init(this, bundle);
+            ImageCircleRenderer.Init();
         }
 
         protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)

@@ -42,7 +42,8 @@ namespace SenEvents
 
         async void Compte_clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MenuPage());
+            //await Navigation.PushAsync(new MenuPage());
+            await Navigation.PushAsync(new TabbedLoginPage());
         }
     }
 }

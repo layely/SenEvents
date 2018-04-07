@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             x:Class="SenEvents.SignUpPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <Frame VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                    <controls:CircleImage x:Name="ImageProfile" Source="no_profile_icon.png" HeightRequest="125" WidthRequest="125" Aspect="AspectFill" HorizontalOptions="CenterAndExpand"/>
+                    <BoxView HeightRequest="10"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Image Source="username_icon.png" HeightRequest="25" WidthRequest="25"/>
+                        <Entry x:Name="EntryName" Placeholder="Nom" FontSize="Small" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="5"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Image Source="email_icon.png" HeightRequest="25" WidthRequest="25"/>
+                        <Entry x:Name="EntryEmail" Placeholder="Email" FontSize="Small" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="5"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Image Source="lock_icon.png" HeightRequest="25" WidthRequest="25"/>
+                        <Entry x:Name="EntryPassword" Placeholder="Mot de Passe" FontSize="Small" HorizontalOptions="FillAndExpand" IsPassword="True"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="5"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Image Source="confirm_password_icon.png" HeightRequest="25" WidthRequest="25"/>
+                        <Entry x:Name="EntryConfirmPassword" Placeholder="Confirmer Mot de Passe" FontSize="Small" HorizontalOptions="FillAndExpand" IsPassword="True"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="5"/>
+                    <StackLayout Orientation="Horizontal" Spacing="10">
+                        <Image Source="city_icon.png" HeightRequest="25" WidthRequest="25"/>
+                        <Picker x:Name="PickerCity" HorizontalOptions="FillAndExpand" Title="Sélectionner une Ville" ItemsSource="{Binding CityList}"/>
+                    </StackLayout>
+                    <BoxView HeightRequest="5"/>
+                    <StackLayout>
+                        <Button x:Name="ButtonSignUp" Image="add_user_icon_25.png" Text="Créer un Compte" WidthRequest="200" BorderRadius="15" HorizontalOptions="Center"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
