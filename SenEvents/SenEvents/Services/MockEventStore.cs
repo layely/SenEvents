@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 [assembly: Xamarin.Forms.Dependency(typeof(SenEvents.MockEventStore))]
 namespace SenEvents
 {
-    class MockEventStore : IDataStore<Event>
+    class MockEventStore : IEventStore<Event>
     {
         List<Event> events;
 
@@ -23,17 +23,18 @@ namespace SenEvents
                     Price = 20000,
                     StartDate = DateTime.Today,
                     EndDate = DateTime.Today.AddHours(2),
-                    Categories = new List<string> {Categories.Music},
+                    Categories = Categories.Music,
                     Place = "Monument de la Renaissance",
                     City = Cities.Dakar,
                     Organization = "Studio Sankara",
-                    EventPublisher = new User {
-                            Email = "ablayelyfondou@gmail.com",
-                            Name = "Ly",
-                            Surname = "Abdoulaye",
-                            City = Cities.Dakar,
-                            Phone = 77868581
-                    }
+                    PublisherEmail = "ablayelyfondou@gmail.com"
+                    //EventPublisher = new User {
+                    //        Email = "ablayelyfondou@gmail.com",
+                    //        Name = "Ly",
+                    //        Surname = "Abdoulaye",
+                    //        City = Cities.Dakar,
+                    //        Phone = 77868581
+                    //}
                 },
                 new Event { Id = 1,
                     Title = "Set Setal à Grand Yoff",
@@ -42,17 +43,11 @@ namespace SenEvents
                     Price = 0,
                     StartDate = DateTime.Today.AddDays(15),
                     EndDate = DateTime.Today.AddDays(15).AddHours(2),
-                    Categories = new List<string> {Categories.Set_Settal},
+                    Categories = Categories.Set_Settal,
                     Place = "Mairie Grand Yoff",
                     City = Cities.Dakar,
                     Organization = "Jeunes de Grand Yoff",
-                    EventPublisher = new User {
-                            Email = "thomas@gmail.com",
-                            Name = "Djina",
-                            Surname = "Thomas",
-                            City = Cities.Dakar,
-                            Phone = 765854455
-                    }
+                    PublisherEmail = "thomas@gmail.com"
                 },
                 new Event { Id = 3,
                     Title = "Grand Marche de l'université de Thiès",
@@ -61,17 +56,11 @@ namespace SenEvents
                     Price = 0,
                     StartDate = DateTime.Today.AddDays(3),
                     EndDate = DateTime.Today.AddDays(3).AddHours(3),
-                    Categories = new List<string> {Categories.Marche},
+                    Categories = Categories.Marche,
                     Place = "Site VCN Thiès None",
                     City = Cities.Thies,
                     Organization = "Studio Sankara",
-                    EventPublisher = new User {
-                            Email = "thomas@gmail.com",
-                            Name = "Djina",
-                            Surname = "Thomas",
-                            City = Cities.Thies,
-                            Phone = 78954525
-                    }
+                    PublisherEmail = "thomas@gmail.com",
                 }
             };
 
@@ -88,17 +77,17 @@ namespace SenEvents
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> DeleteItemAsync(string id)
+        public async Task<bool> DeleteItemAsync(int id)
         {
-            var _event = events.Where((Event arg) => arg.Id.ToString() == id).FirstOrDefault();
+            var _event = events.Where((Event arg) => arg.Id == id).FirstOrDefault();
             events.Remove(_event);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<Event> GetItemAsync(string id)
+        public async Task<Event> GetItemAsync(int id)
         {
-            return await Task.FromResult(events.FirstOrDefault(s => s.Id.ToString().Equals(id)));
+            return await Task.FromResult(events.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Event>> GetItemsAsync(bool forceRefresh = false)
@@ -119,6 +108,6 @@ namespace SenEvents
         public async Task<bool> IsAttending(string userEmail)
         {
             return await Task.FromResult(DateTime.Now.Second % 2 == 0 ? true : false);
-        }  
+        }
     }
 }

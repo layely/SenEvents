@@ -1,0 +1,25 @@
+{
+  "name": "senevents_nodeapp",
+  "version": "1.0.0",
+  "description": "Backend for xamarin app :: SenEvents",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "$"
+  },
+  "keywords": [
+    "senevents"
+  ],
+  "author": "layely",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.0.13",
+    "mongoose-id-validator": "^0.4.3"
+  }
+}

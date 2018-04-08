@@ -11,5 +11,6 @@ namespace SenEvents
         Task<string> GetCurrentUser();
         string GetCurrentUserCity();
         Task<string> GetCurrentUserCityAsync();
+        Task<string> GetAllUsersAsync();
     }
 }

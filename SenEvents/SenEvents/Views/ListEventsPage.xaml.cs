@@ -27,7 +27,7 @@ namespace SenEvents
             BindingContext = this.viewModel = viewModel;
         }
 
-        protected override void OnAppearing()
+        protected async override void OnAppearing()
         {
             base.OnAppearing();
 
@@ -53,6 +53,8 @@ namespace SenEvents
         async void Compte_clicked(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new MenuPage());
+            string content = await viewModel.UserStore.GetAllUsersAsync();
+            await DisplayAlert("boff", content, "OK");
             await Navigation.PushAsync(new TabbedLoginPage());
         }
     }

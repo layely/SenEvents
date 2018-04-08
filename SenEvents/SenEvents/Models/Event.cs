@@ -17,11 +17,11 @@ namespace SenEvents
         public int Price { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public List<string> Categories { get; set; }
+        public string Categories { get; set; }
         public string Place { get; set; }
         public string City { get; set; }
         public string Organization { get; set; }
-        public User EventPublisher { get; set; }
+        public String PublisherEmail { get; set; }
 
     }
 }

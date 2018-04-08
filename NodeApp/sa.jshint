@@ -1,0 +1,8 @@
+
+{
+    "esversion": 6,
+    "node": true,
+    "curly": true, // Require {} for every new block or scope
+    "camelcase": true, // true: Identifiers must be in camelCase
+    "indent": 4 // {int} Number of spaces to use for indentation
+}
