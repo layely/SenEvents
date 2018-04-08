@@ -26,7 +26,7 @@ exports.addOne = function (req, res) {
 
 exports.getOne = function (req, res) {
     const queryConditions = {
-        _id: req.params._id
+        Email: req.params.email
     };
 
     User.findOne(queryConditions, function (err, user) {
@@ -53,7 +53,7 @@ exports.modifyOne = function (req, res) {
 
 exports.deleteOne = function (req, res) {
     const queryConditions = {
-        _id: req.params._id
+        Email: req.params._id
     };
 
     User.remove(queryConditions, function (err, result) {

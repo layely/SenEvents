@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -53,8 +54,24 @@ namespace SenEvents
         async void Compte_clicked(object sender, EventArgs e)
         {
             //await Navigation.PushAsync(new MenuPage());
-            string content = await viewModel.UserStore.GetAllUsersAsync();
-            await DisplayAlert("boff", content, "OK");
+
+            //TEsting my damned stuff here
+            //User user = await viewModel.UserStore.GetUserAsync("ablayelyfondou@gmail.com");
+
+            //string output = JsonConvert.SerializeObject(user);
+            //await DisplayAlert("Serialisation test", output, "OK");
+
+
+            User user = new User()
+            {
+                Email = "aoly@g.com",
+                Name = "AOL",
+                City = "THIES",
+                Password = "password"
+            };
+
+            string output = await viewModel.UserStore.AddUserAsync(user);
+
             await Navigation.PushAsync(new TabbedLoginPage());
         }
     }

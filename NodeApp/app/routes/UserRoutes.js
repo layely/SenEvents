@@ -6,7 +6,7 @@ module.exports = function (app) {
         .get(userController.listAll)
         .post(userController.addOne);
 
-    app.route('/user/:_id')
+    app.route('/user/:email')
         .get(userController.getOne)
         .put(userController.modifyOne)
         .delete(userController.deleteOne);

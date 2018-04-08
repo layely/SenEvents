@@ -12,5 +12,7 @@ namespace SenEvents
         string GetCurrentUserCity();
         Task<string> GetCurrentUserCityAsync();
         Task<string> GetAllUsersAsync();
+        Task<User> GetUserAsync(string email);
+        Task<string> AddUserAsync(User user);
     }
 }
