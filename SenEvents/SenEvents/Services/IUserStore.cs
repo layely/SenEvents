@@ -8,9 +8,12 @@ namespace SenEvents
 {
     public interface IUserStore
     {
-        Task<string> GetCurrentUser();
-        string GetCurrentUserCity();
+        Task<string> GetCurrentUserEmailAsync();
+        Task<bool> IsAUserConnectedAsync();
         Task<string> GetCurrentUserCityAsync();
+        Task<bool> SaveConnetedUserAsync(User user);
+        Task<bool> DeleteConnectedUserAsync();
+
         Task<string> GetAllUsersAsync();
         Task<User> GetUserAsync(string email);
         Task<string> AddUserAsync(User user);

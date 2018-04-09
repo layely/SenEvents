@@ -6,20 +6,47 @@ namespace SenEvents
 {
     public class MainPage : TabbedPage
     {
+        Page listEventsPage = null;
+        Page listEventInUserCityPage = null;
+
+        bool IsInitialised = false;
+
+        BaseViewModel baseViewModel;
+
         public MainPage()
         {
             //Page itemsPage, aboutPage = null;
-            Page listEventsPage = null;
-            Page listEventInUserCityPage = null;
 
-            BaseViewModel baseViewModel = new BaseViewModel();
+            baseViewModel = new BaseViewModel();
+
+            Title = "SenEvents";
+        }
+
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            InitAndAddPage();
+
+            //Title = CurrentPage?.Title ?? string.Empty;
+        }
+
+        protected async override void OnCurrentPageChanged()
+        {
+            base.OnCurrentPageChanged();
+        }
+
+        async void InitAndAddPage()
+        {
+            if (this.IsInitialised)
+                return;
 
             listEventsPage = new ListEventsPage()
             {
                 Title = "Explorer"
             };
 
-            listEventInUserCityPage = new ListEventsPage(new ListEventsViewModel(baseViewModel.UserStore.GetCurrentUserCity()))
+            listEventInUserCityPage = new ListEventsPage(new ListEventsViewModel(await baseViewModel.UserStore.GetCurrentUserCityAsync()))
             {
                 Title = "Dans Ma Ville"
             };
@@ -27,13 +54,7 @@ namespace SenEvents
             Children.Add(listEventInUserCityPage);
             Children.Add(listEventsPage);
 
-            Title = "SenEvents";
-        }
-
-        protected override void OnCurrentPageChanged()
-        {
-            base.OnCurrentPageChanged();
-            //Title = CurrentPage?.Title ?? string.Empty;
+            this.IsInitialised = true;
         }
     }
 }

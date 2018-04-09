@@ -29,6 +29,15 @@ namespace SenEvents
             //Title = "SenEvents";
         }
 
+        protected async override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            MessagingCenter.Subscribe<Page>(this, "die", (sender) => {
+                Navigation.RemovePage(this);
+            });
+        }
+
         protected override void OnCurrentPageChanged()
         {
             base.OnCurrentPageChanged();

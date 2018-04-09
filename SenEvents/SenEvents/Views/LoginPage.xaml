@@ -20,7 +20,8 @@
                     </StackLayout>
                     <BoxView HeightRequest="15"/>
                     <StackLayout>
-                        <Button x:Name="ButtonLogin" Image="login_icon_25.png" Text="Se Connecter" WidthRequest="200" BorderRadius="15" HorizontalOptions="Center"/>
+                        <Button x:Name="ButtonLogin" Clicked="ButtonLogin_clicked" 
+                                Image="login_icon_25.png" Text="Se Connecter" WidthRequest="200" BorderRadius="15" HorizontalOptions="Center"/>
                     </StackLayout>
                 </StackLayout>
             </Frame>

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 [assembly: Xamarin.Forms.Dependency(typeof(SenEvents.MockUserStore))]
 namespace SenEvents
@@ -14,20 +15,52 @@ namespace SenEvents
     public class MockUserStore : IUserStore
     {
         public const string BaseUrl = "http://192.168.1.66:8000";
+        const string PropertyKey_Email = "email";
+        const string PropertyKey_City = "city";
 
-        public async Task<string> GetCurrentUser()
+        public async Task<string> GetCurrentUserEmailAsync()
         {
-            return await Task.FromResult(string.Empty);
+            string email = string.Empty;
+
+            if (Application.Current.Properties.ContainsKey(PropertyKey_Email))
+            {
+                email = Application.Current.Properties[PropertyKey_Email] as string;
+            }
+
+            return await Task.FromResult(email);
         }
 
-        public string GetCurrentUserCity()
+        public async Task<bool> IsAUserConnectedAsync()
         {
-            return Cities.Dakar;
+            return await Task.FromResult(!string.IsNullOrWhiteSpace(await this.GetCurrentUserEmailAsync()));
         }
 
         public async Task<string> GetCurrentUserCityAsync()
         {
-            return await Task.FromResult(Cities.Dakar);
+            string city = string.Empty;
+
+            if (Application.Current.Properties.ContainsKey(PropertyKey_City))
+            {
+                city = Application.Current.Properties[PropertyKey_City] as string;
+            }
+
+            return await Task.FromResult(city);
+        }
+
+        public async Task<bool> SaveConnetedUserAsync(User user)
+        {
+            Application.Current.Properties[PropertyKey_Email] = user.Email;
+            Application.Current.Properties[PropertyKey_City] = user.City;
+
+            return await Task.FromResult(true);
+        }
+
+        public async Task<bool> DeleteConnectedUserAsync()
+        {
+            Application.Current.Properties[PropertyKey_Email] = string.Empty;
+            Application.Current.Properties[PropertyKey_City] = string.Empty;
+
+            return await Task.FromResult(true);
         }
 
         public async Task<string> GetAllUsersAsync()
@@ -76,7 +109,7 @@ namespace SenEvents
                 using (StreamReader reader = new StreamReader(response.GetResponseStream()))
                 {
                     var content = reader.ReadToEnd();
-                    if (string.IsNullOrWhiteSpace(content))
+                    if (string.IsNullOrWhiteSpace(content) || content.Equals("null"))
                     {
                         Debug.WriteLine("Response contained empty body...");
                     }

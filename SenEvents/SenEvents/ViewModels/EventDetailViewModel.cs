@@ -27,7 +27,7 @@ namespace SenEvents
         }
 
         public async Task<bool> InitAsync() {
-            ButtonAttendText = await EventStore.IsAttending(await UserStore.GetCurrentUser()) ? "Je n'assisterai pas" : "J'assisterai";
+            ButtonAttendText = await EventStore.IsAttending(await UserStore.GetCurrentUserEmailAsync()) ? "Je n'assisterai pas" : "J'assisterai";
             return await Task.FromResult(true);
         }
     }

@@ -53,26 +53,20 @@ namespace SenEvents
 
         async void Compte_clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new MenuPage());
+            if (viewModel.IsBusy)
+                return;
+            viewModel.IsBusy = true;
 
-            //TEsting my damned stuff here
-            //User user = await viewModel.UserStore.GetUserAsync("ablayelyfondou@gmail.com");
-
-            //string output = JsonConvert.SerializeObject(user);
-            //await DisplayAlert("Serialisation test", output, "OK");
-
-
-            User user = new User()
+            if (await viewModel.UserStore.IsAUserConnectedAsync())
             {
-                Email = "aoly@g.com",
-                Name = "AOL",
-                City = "THIES",
-                Password = "password"
-            };
+                await Navigation.PushAsync(new MenuPage());
+            }
+            else
+            {
+                await Navigation.PushAsync(new TabbedLoginPage());
+            }
 
-            string output = await viewModel.UserStore.AddUserAsync(user);
-
-            await Navigation.PushAsync(new TabbedLoginPage());
+            viewModel.IsBusy = false;
         }
     }
 }

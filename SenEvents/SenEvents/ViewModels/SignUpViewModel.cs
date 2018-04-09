@@ -10,6 +10,7 @@ namespace SenEvents
     {
         public List<string> CityList;
 
+
         public SignUpViewModel()
         {
             CityList = Cities.All.ToList<string>();
