@@ -39,7 +39,7 @@ exports.getOne = function (req, res) {
 
 exports.modifyOne = function (req, res) {
     const queryConditions = {
-        _id: req.params._id,
+        Email: req.params.email,
     };
 
     const modified = req.body;
@@ -53,7 +53,7 @@ exports.modifyOne = function (req, res) {
 
 exports.deleteOne = function (req, res) {
     const queryConditions = {
-        Email: req.params._id
+        Email: req.params.email
     };
 
     User.remove(queryConditions, function (err, result) {

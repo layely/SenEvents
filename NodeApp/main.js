@@ -1,11 +1,14 @@
 'use strict';
-var express = require('express'),
+const express = require('express'),
     app = express(),
     port = process.env.PORT || 8000;
 
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 mongoose.set('debug', 'true');
+
+const fileUpload = require('express-fileupload');
+app.use(fileUpload({ safeFileNames: true, preserveExtension: 4 }));
 
 //Load database configuration
 const db = require('./config/db');
