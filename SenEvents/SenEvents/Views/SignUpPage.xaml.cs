@@ -31,39 +31,24 @@ namespace SenEvents
             {
                 Command = new Command(() =>
                 {
-                    PickImage();
+                    GetImage();
                 })
             });
         }
 
-        async void PickImage()
+        async void GetImage()
         {
-            if (IsBusy)
+            if (ViewModel.IsBusy)
                 return;
 
-            IsBusy = true;
+            ViewModel.IsBusy = true;
 
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await DisplayAlert("Photos non supportées", ":( Permission not granted to photos.", "OK");
-                return;
-            }
-            var file = await CrossMedia.Current.PickPhotoAsync(new Plugin.Media.Abstractions.PickMediaOptions
-            {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium,
-            });
+            bool confirm = await DisplayAlert("Profile", "", "Camera", "Sélectionner dans Gallery");
+            var pickedImage = confirm ? await MyCrossMediaImp.TakeImage() : await MyCrossMediaImp.PickImage();
+            if (pickedImage != null)
+                this.ImageProfile.Source = pickedImage;
 
-            if (file == null)
-                return;
-
-            ImageProfile.Source = ImageSource.FromStream(() =>
-            {
-                var stream = file.GetStream();
-                file.Dispose();
-                return stream;
-            });
-
-            IsBusy = false;
+            ViewModel.IsBusy = false;
         }
     }
 }

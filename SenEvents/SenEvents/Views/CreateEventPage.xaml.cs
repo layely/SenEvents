@@ -22,7 +22,8 @@ namespace SenEvents
 
         }
 
-        protected override void OnAppearing() {
+        protected override void OnAppearing()
+        {
             DatePickerStart.MinimumDate = DateTime.Now;
             DatePickerStart.Date = DateTime.Now;
 
@@ -32,6 +33,10 @@ namespace SenEvents
 
         async void ButtonGallery_Clicked(object sender, EventArgs e)
         {
+            if (ViewModel.IsBusy)
+                return;
+            ViewModel.IsBusy = true;
+
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
                 await DisplayAlert("Photos non supportées", ":( Permission not granted to photos.", "OK");
@@ -42,15 +47,17 @@ namespace SenEvents
                 PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium,
             });
 
-            if (file == null)
-                return;
-
-            Image.Source = ImageSource.FromStream(() =>
+            if (file != null)
             {
-                var stream = file.GetStream();
-                file.Dispose();
-                return stream;
-            });
+                Image.Source = ImageSource.FromStream(() =>
+                {
+                    var stream = file.GetStream();
+                    file.Dispose();
+                    return stream;
+                });
+            }
+
+            ViewModel.IsBusy = false;
         }
     }
 }
