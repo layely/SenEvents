@@ -3,6 +3,7 @@ const path = require('path');
 const uuidv1 = require('uuid/v1');
 
 exports.upload = function (req, res) {
+    console.log("inside upload");
     if (!req.files)
         return res.status(400).send('No files were uploaded.');
 

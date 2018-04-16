@@ -159,5 +159,9 @@ namespace SenEvents
             }
         }
 
+        public async Task<bool> UserExistAsync(string userEmail)
+        {
+            return await Task.FromResult(await this.GetUserAsync(userEmail) != null);
+        }
     }
 }

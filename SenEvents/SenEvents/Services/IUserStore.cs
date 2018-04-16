@@ -17,5 +17,6 @@ namespace SenEvents
         Task<string> GetAllUsersAsync();
         Task<User> GetUserAsync(string email);
         Task<string> AddUserAsync(User user);
+        Task<bool> UserExistAsync(string userEmail);
     }
 }

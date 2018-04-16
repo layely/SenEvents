@@ -9,7 +9,7 @@ namespace SenEvents
     class SignUpViewModel : BaseViewModel
     {
         public List<string> CityList;
-
+        public string pickedImagePath = string.Empty;
 
         public SignUpViewModel()
         {

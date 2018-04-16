@@ -12,6 +12,7 @@ namespace SenEvents
         //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
         public IEventStore<Event> EventStore => DependencyService.Get<IEventStore<Event>>() ?? new MockEventStore();
         public IUserStore UserStore => DependencyService.Get<IUserStore>() ?? new MockUserStore();
+        public ImageStore ImageStore = new ImageStore();
 
         bool isBusy = false;
         public bool IsBusy

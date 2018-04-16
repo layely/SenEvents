@@ -35,7 +35,7 @@
                     </StackLayout>
                     <BoxView HeightRequest="5"/>
                     <StackLayout>
-                        <Button x:Name="ButtonSignUp" Image="add_user_icon_25.png" Text="Créer un Compte" WidthRequest="200" BorderRadius="15" HorizontalOptions="Center"/>
+                        <Button x:Name="ButtonSignUp" Image="add_user_icon_25.png" Text="Créer un Compte" WidthRequest="200" BorderRadius="15" HorizontalOptions="Center" Clicked="ButtonSignUp_Clicked"/>
                     </StackLayout>
                 </StackLayout>
             </Frame>

@@ -11,7 +11,13 @@ namespace SenEvents
 {
     class MyCrossMediaImp
     {
-        public static async Task<ImageSource> PickImage()
+        public class CMImage
+        {
+            public string Path { get; set; }
+            public ImageSource ImageSource { get; set; }
+        }
+
+        public static async Task<CMImage> PickImage()
         {
             if (!CrossMedia.Current.IsPickPhotoSupported)
             {
@@ -24,22 +30,27 @@ namespace SenEvents
                 CompressionQuality = 92
             });
 
-            ImageSource img = null;
+            CMImage cmImg = null;
 
             if (file != null)
             {
-                img = ImageSource.FromStream(() =>
+                cmImg = new CMImage
                 {
-                    var stream = file.GetStream();
-                    file.Dispose();
-                    return stream;
-                });
+                    ImageSource = ImageSource.FromStream(() =>
+                    {
+                        var stream = file.GetStream();
+                        file.Dispose();
+                        return stream;
+                    }),
+
+                    Path = file.Path
+                };
             }
 
-            return await Task.FromResult(img);
+            return await Task.FromResult(cmImg);
         }
 
-        public static async Task<ImageSource> TakeImage()
+        public static async Task<CMImage> TakeImage()
         {
             await CrossMedia.Current.Initialize();
 
@@ -60,19 +71,24 @@ namespace SenEvents
                 DefaultCamera = CameraDevice.Front
             });
 
-            ImageSource img = null;
+            CMImage cmImg = null;
 
             if (file != null)
             {
-                img = ImageSource.FromStream(() =>
+                cmImg = new CMImage
                 {
-                    var stream = file.GetStream();
-                    file.Dispose();
-                    return stream;
-                });
+                    ImageSource = ImageSource.FromStream(() =>
+                    {
+                        var stream = file.GetStream();
+                        file.Dispose();
+                        return stream;
+                    }),
+
+                    Path = file.Path
+                };
             }
 
-            return await Task.FromResult(img);
+            return await Task.FromResult(cmImg);
         }
 
     }
