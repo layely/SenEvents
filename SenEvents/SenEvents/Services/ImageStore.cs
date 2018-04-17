@@ -10,11 +10,14 @@ namespace SenEvents
 {
     public class ImageStore
     {
-        public async void upload(string filePath)
+        public async void upload(string filePath,
+            EventHandler<FileUploadResponse> completed,
+            EventHandler<FileUploadResponse> error,
+            EventHandler<FileUploadProgress> progress)
         {
-            //CrossFileUploader.Current.FileUploadCompleted += Current_FileUploadCompleted;
-            //CrossFileUploader.Current.FileUploadError += Current_FileUploadError;
-            //CrossFileUploader.Current.FileUploadProgress += Current_FileUploadProgress;
+            CrossFileUploader.Current.FileUploadCompleted += completed;
+            CrossFileUploader.Current.FileUploadError += error;
+            CrossFileUploader.Current.FileUploadProgress += progress;
 
             string url = string.Format(@"{0}/images", ServiceConstants.BASE_URL);
             await CrossFileUploader.Current.UploadFileAsync(url, new FilePathItem("image", filePath), new Dictionary<string, string>()
@@ -22,38 +25,5 @@ namespace SenEvents
                 /*<HEADERS HERE>*/
             });
         }
-
-        //private void Current_FileUploadProgress(object sender, FileUploadProgress e)
-        //{
-        //    Device.BeginInvokeOnMainThread(() =>
-        //    {
-        //        progress.Progress = e.Percentage / 100.0f;
-        //    });
-        //}
-
-        //private void Current_FileUploadError(object sender, FileUploadResponse e)
-        //{
-        //    isBusy = false;
-        //    System.Diagnostics.Debug.WriteLine($"{e.StatusCode} - {e.Message}");
-        //    Device.BeginInvokeOnMainThread(async () =>
-        //    {
-        //        await DisplayAlert("File Upload", "Upload Failed", "Ok");
-        //        progress.IsVisible = false;
-        //        progress.Progress = 0.0f;
-        //    });
-        //}
-
-        //private void Current_FileUploadCompleted(object sender, FileUploadResponse e)
-        //{
-        //    isBusy = false;
-        //    System.Diagnostics.Debug.WriteLine($"{e.StatusCode} - {e.Message}");
-        //    Device.BeginInvokeOnMainThread(async () =>
-        //    {
-        //        await DisplayAlert("File Upload", "Upload Completed", "Ok");
-        //        progress.IsVisible = false;
-        //        progress.Progress = 0.0f;
-        //    });
-        //}
-
     }
 }

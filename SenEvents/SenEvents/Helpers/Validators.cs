@@ -25,6 +25,11 @@ namespace SenEvents
         public static bool checkPasswordValide(string password)
         {
             // TODO
+            if (string.IsNullOrWhiteSpace(password))
+            {
+                return false;
+            }
+
             return true;
         }
     }

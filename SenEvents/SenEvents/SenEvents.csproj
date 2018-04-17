@@ -43,7 +43,6 @@
     <Compile Include="Helpers\DateUtil.cs" />
     <Compile Include="Helpers\IconUris.cs" />
     <Compile Include="Helpers\MyCrossMediaImp.cs" />
-    <Compile Include="Helpers\MyImage.cs" />
     <Compile Include="Helpers\Validators.cs" />
     <Compile Include="Models\Event.cs" />
     <Compile Include="Models\Item.cs" />

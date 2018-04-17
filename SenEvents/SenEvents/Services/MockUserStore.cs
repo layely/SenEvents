@@ -14,7 +14,6 @@ namespace SenEvents
 {
     public class MockUserStore : IUserStore
     {
-        public const string BaseUrl = "http://192.168.1.66:8000";
         const string PropertyKey_Email = "email";
         const string PropertyKey_City = "city";
 
@@ -66,7 +65,7 @@ namespace SenEvents
         public async Task<string> GetAllUsersAsync()
         {
             //var rxcui = "198440";
-            var request = HttpWebRequest.Create(string.Format(@"{0}/users", BaseUrl));
+            var request = HttpWebRequest.Create(string.Format(@"{0}/users", ServiceConstants.BASE_URL));
             request.ContentType = "application/json";
             request.Method = "GET";
 
@@ -94,7 +93,7 @@ namespace SenEvents
         public async Task<User> GetUserAsync(string email)
         {
             //var rxcui = "198440";
-            var request = HttpWebRequest.Create(string.Format(@"{0}/user/{1}", BaseUrl, email));
+            var request = HttpWebRequest.Create(string.Format(@"{0}/user/{1}", ServiceConstants.BASE_URL, email));
             request.ContentType = "application/json";
             request.Method = "GET";
 
@@ -126,7 +125,7 @@ namespace SenEvents
 
         public async Task<string> AddUserAsync(User user)
         {
-            var request = HttpWebRequest.Create(string.Format(@"{0}/users/", BaseUrl));
+            var request = HttpWebRequest.Create(string.Format(@"{0}/users/", ServiceConstants.BASE_URL));
             request.ContentType = "application/json";
             request.Method = "POST";
             var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(user));
