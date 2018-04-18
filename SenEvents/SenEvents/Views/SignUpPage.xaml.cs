@@ -158,6 +158,12 @@ namespace SenEvents
 
             string result = await ViewModel.UserStore.AddUserAsync(user);
             await DisplayAlert("result", result, "OK");
+
+            // Log user
+            await ViewModel.UserStore.SaveConnetedUserAsync(user);
+            await Navigation.PushAsync(new MenuPage());
+
+            MessagingCenter.Send<Page>(this, "die");
         }
     }
 }
