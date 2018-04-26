@@ -147,7 +147,7 @@ namespace SenEvents
                 PublisherEmail = await ViewModel.UserStore.GetCurrentUserEmailAsync()
             };
 
-            await DisplayAlert("Result", await ViewModel.EventStore.AddItemAsync(_event), "OK");
+            await DisplayAlert("Result", await ViewModel.EventStore.AddEventAsync(_event), "OK");
         }
     }
 }

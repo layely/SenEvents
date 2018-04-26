@@ -48,12 +48,13 @@ namespace SenEvents
             try
             {
                 Events.Clear();
-                var events = await EventStore.GetItemsAsync(true);
+                var events = await EventStore.GetAllEventAsync();
                 Debug.WriteLine("events count :::::: " + events.Count());
                 foreach (var _event in events)
                 {
                     if (string.IsNullOrEmpty(this.UserCity) || _event.City.Equals(this.UserCity))
                     {
+                        _event.PhotoUri = ImageStore.GetEventUrl(_event.PhotoUri);
                         Events.Add(_event);
                     }
                 }

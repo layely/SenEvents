@@ -36,6 +36,7 @@ namespace SenEvents
             {
                 viewModel.LoadEventsCommand.Execute(null);
                 this.NeedUpdate = false;
+                EventsListView.EndRefresh();
             }
         }
 

@@ -64,7 +64,6 @@ namespace SenEvents
 
         public async Task<string> GetAllUsersAsync()
         {
-            //var rxcui = "198440";
             var request = HttpWebRequest.Create(string.Format(@"{0}/users", ServiceConstants.BASE_URL));
             request.ContentType = "application/json";
             request.Method = "GET";
@@ -92,7 +91,6 @@ namespace SenEvents
 
         public async Task<User> GetUserAsync(string email)
         {
-            //var rxcui = "198440";
             var request = HttpWebRequest.Create(string.Format(@"{0}/user/{1}", ServiceConstants.BASE_URL, email));
             request.ContentType = "application/json";
             request.Method = "GET";
