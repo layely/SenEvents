@@ -1,6 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -70,11 +74,39 @@ namespace SenEvents
             }
         }
 
-        public async Task<bool> AddItemAsync(Event _event)
+        public async Task<string> AddItemAsync(Event _event)
         {
-            events.Add(_event);
+            var request = HttpWebRequest.Create(string.Format(@"{0}/events/", ServiceConstants.BASE_URL));
+            request.ContentType = "application/json";
+            request.Method = "POST";
+            var data = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(_event));
 
-            return await Task.FromResult(true);
+            using (var stream = await request.GetRequestStreamAsync())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+
+            using (HttpWebResponse response = await request.GetResponseAsync() as HttpWebResponse)
+            {
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    Debug.WriteLine("Error fetching data. Server returned status code: {0}", response.StatusCode);
+                }
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    var content = reader.ReadToEnd();
+                    if (string.IsNullOrWhiteSpace(content))
+                    {
+                        Debug.WriteLine("Response contained empty body...");
+                    }
+                    else
+                    {
+                        Debug.WriteLine("Response Body: \r\n {0}", content);
+                    }
+
+                    return await Task.FromResult(content);
+                }
+            }
         }
 
         public async Task<bool> DeleteItemAsync(int id)

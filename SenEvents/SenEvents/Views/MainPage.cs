@@ -28,7 +28,19 @@ namespace SenEvents
 
             InitAndAddPage();
 
-            //Title = CurrentPage?.Title ?? string.Empty;
+            // Title = CurrentPage?.Title ?? string.Empty;
+            autoLogin();
+        }
+
+        private async void autoLogin()
+        {
+            // Let's connect automatically a user (for testing purpose)
+            IUserStore userStore = new MockUserStore();
+            if (!await userStore.IsAUserConnectedAsync())
+            {
+                User ablayelyfondou = await userStore.GetUserAsync("ablayelyfondou@gmail.com");
+                await userStore.SaveConnetedUserAsync(ablayelyfondou);
+            }
         }
 
         protected async override void OnCurrentPageChanged()

@@ -10,6 +10,7 @@ namespace SenEvents
     {
         public List<string> CityList;
         public List<string> CategoryList;
+        public string pickedImagePath = string.Empty;
 
         public CreateEventViewModel()
         {

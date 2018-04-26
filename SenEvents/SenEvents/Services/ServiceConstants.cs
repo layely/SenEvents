@@ -8,6 +8,6 @@ namespace SenEvents
 {
     class ServiceConstants
     {
-        public static string BASE_URL = "http://192.168.1.59:8000";
+        public static string BASE_URL = "http://192.168.1.25:8000";
     }
 }

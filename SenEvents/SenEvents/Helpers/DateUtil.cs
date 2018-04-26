@@ -23,5 +23,16 @@ namespace SenEvents
 
             return "Iconnu";
         }
+
+        /// <summary>
+        /// Build a DateTime from a DatePicker and a TimePicker
+        /// </summary>
+        /// <param name="dateStart"></param>
+        /// <param name="timeStart"></param>
+        /// <returns></returns>
+        public static DateTime GetDateTimeFromPickers(DateTime date, TimeSpan time)
+        {
+            return date.AddMinutes(time.TotalMinutes);
+        }
     }
 }
