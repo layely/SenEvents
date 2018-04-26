@@ -10,7 +10,7 @@ var eventSchema = new Schema({
     StartDate: { type: String, required: true }, // Format: dd/mm/yyyy-hh:mm
     Text: { type: String, required: true },
     Price: { type: Number, required: true },
-    Category: {type: String, required: true},
+    Categories: {type: String, required: true},
     City: {type: String, required: true},
     PublisherEmail: {type: String, required: true}
 });

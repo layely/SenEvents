@@ -5,11 +5,14 @@ var mongoose = require('mongoose'),
 exports.listAll = function (req, res) {
     const queryConditions = {};
 
-    Event.find(queryConditions, function (err, event) {
+    Event.find(queryConditions).lean().exec(function (err, events) {
         if (err) {
             res.send(err);
         }
-        res.json(event);
+        events.forEach(event => {
+            event.Id = event._id
+        });
+        res.json(events);
     });
 };
 
@@ -29,10 +32,11 @@ exports.getOne = function (req, res) {
         _id: req.params._id
     };
 
-    Event.findOne(queryConditions, function (err, event) {
+    Event.findOne(queryConditions).lean().exec(function (err, event) {
         if (err) {
             res.send(err);
         }
+        event.Id = event._id;
         res.json(event);
     });
 };
